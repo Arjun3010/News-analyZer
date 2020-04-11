@@ -5,6 +5,7 @@ import requests
 import functions
 
 fig = plt.figure(figsize = (15,14))
+
 m = Basemap(
     projection = 'mill',
     llcrnrlat = 6,
@@ -15,7 +16,6 @@ m = Basemap(
 m.drawmapboundary(fill_color='aqua')
 m.fillcontinents(color='#ddaa66',lake_color='aqua')
 m.drawcoastlines()
-
 m.drawparallels(np.arange(-90,90,5),labels=[True,False,False,False])
 m.drawmeridians(np.arange(-180,180,5),labels=[0,0,0,1])
 
@@ -25,7 +25,6 @@ lon,lat = 77.2,11.42
 xpt,ypt = m(lon,lat)
 
 catch = requests.get('https://api.tomtom.com/search/2/reverseGeocode/' + str(lat) + '%2C%20' + str(lon) + '.json?key=SK8FmK64sGjB471GAD4AnU26xdQH02Bv')
-
 
 point, = m.plot(xpt,ypt,'bo')
 

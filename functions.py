@@ -60,17 +60,20 @@ def getFromGoogle(a,m,fig):
         
         print(x,y)
         
-        mask1 = y < 0
-        mask2 = y >= 0
+        mask1 = y < -0.5
+        mask2 = y > 0.5        
+        mask3 = (y >= -0.5) & (y <= 0.5)
         
         plt.subplot(3,1,m)
         plt.barh(x[mask1],y[mask1],color = 'red')
+        plt.barh(x[mask3],y[mask3],color = 'grey')
         plt.barh(x[mask2],y[mask2],color = 'green')
-        plt.xlim(-1.5,1.5)
-        plt.title(k.title,fontfamily = 'Cooper Black',fontsize = 'xx-large',wrap = True)
+        
+        plt.xlim(-1,1)
+        plt.title(k.title,fontfamily = 'Cooper Black',fontsize = 'x-large',wrap = True)
         
     except:
-        pass
+        print('error')
 
 def searchHeadlines(a1):
     
